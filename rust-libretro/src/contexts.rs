@@ -566,7 +566,7 @@ impl<'a> GenericContext<'a> {
     pub fn vfs_write(
         &self,
         handle: &mut retro_vfs_file_handle,
-        buffer: &[u8],
+        buffer: &mut [u8],
     ) -> Result<u64, Box<dyn std::error::Error>> {
         let interfaces = self.interfaces.read().unwrap();
 
