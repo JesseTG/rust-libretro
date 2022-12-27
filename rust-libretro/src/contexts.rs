@@ -566,14 +566,14 @@ impl<'a> GenericContext<'a> {
     pub fn vfs_write(
         &self,
         handle: &mut retro_vfs_file_handle,
-        buffer: &mut [u8],
+        buffer: &[u8],
     ) -> Result<u64, Box<dyn std::error::Error>> {
         let interfaces = self.interfaces.read().unwrap();
 
         if let Some(interface) = interfaces.vfs_interface_info.interface {
             if let Some(write) = interface.write {
                 let bytes_written =
-                    unsafe { write(handle, buffer.as_mut_ptr() as *mut _, buffer.len() as u64) };
+                    unsafe { write(handle, buffer.as_ptr() as *const c_void, buffer.len() as u64) };
                 if bytes_written >= 0 {
                     return Ok(bytes_written as u64);
                 }
