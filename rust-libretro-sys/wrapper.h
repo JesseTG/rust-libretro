@@ -1,1 +1,1 @@
-#include "libretro-common/libretro.h"
+#include <libretro.h>

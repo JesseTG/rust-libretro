@@ -39,6 +39,7 @@ fn main() {
         .prepend_enum_name(false)
         .impl_debug(true)
         .clang_arg("-fparse-all-comments")
+        .clang_arg("-I./include")
         .enable_function_attribute_detection()
         .default_enum_style(bindgen::EnumVariation::Rust {
             non_exhaustive: true,
