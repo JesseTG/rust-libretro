@@ -48,8 +48,8 @@ fn libretro_h() -> bindgen::Builder {
     println!("cargo:rerun-if-changed=libretro.h");
 
     bindgen::Builder::default()
-        .header("libretro.h")
-        .clang_arg("-I.")
+        .header("include/libretro.h")
+        .clang_arg("-I./include")
         .allowlist_type("(retro|RETRO)_.*")
         .allowlist_function("(retro|RETRO)_.*")
         .allowlist_var("(retro|RETRO)_.*")
@@ -89,8 +89,8 @@ fn libretro_vulkan_h() -> bindgen::Builder {
     println!("cargo:rerun-if-changed=libretro_vulkan.h");
 
     bindgen::Builder::default()
-        .header("libretro_vulkan.h")
-        .clang_arg("-I.")
+        .header("include/libretro_vulkan.h")
+        .clang_arg("-I./include")
         .allowlist_type("retro.*vulkan")
         .allowlist_var("RETRO_.+_VULKAN_VERSION")
         .blocklist_type("^retro_hw_render.*type$")
